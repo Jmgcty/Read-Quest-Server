@@ -1,0 +1,33 @@
+{
+    "name": "readquest/server",
+    "description": "REST API Service for Read Quest Application",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "illuminate/database": "^12.20",
+        "robmorgan/phinx": "^0.16.10",
+        "cboden/ratchet": "^0.4.4",
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+
+    "scripts": {
+        "serve": "php -S 192.168.1.21:8000 -t public",
+        "socket" : "php sockets/server.php",
+        "migrate": "phinx migrate",
+        "rollback": "phinx rollback -t 0",
+        "seed": "phinx seed:run"
+    },
+    "authors": [
+        {
+            "name": "Jmgty"
+        }
+    ],
+    "minimum-stability": "stable"
+
+}
