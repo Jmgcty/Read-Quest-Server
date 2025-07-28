@@ -42,32 +42,45 @@ class SignupController
 
             if ($user) {
                 $response->getBody()->write(json_encode([
-                    'status' => 'error',
+                    'status' => 'failed',
                     'message' => 'email already used',
+                    'errors' => [
+                        'email' => 'your email is already used',
+                    ]
+
                 ]));
                 return $response->withStatus(404)->withHeader('Content-Type', 'application/json');
             }
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $response->getBody()->write(json_encode([
-                    'status' => 'error',
+                    'status' => 'failed',
                     'message' => 'invalid email format',
+                    'errors' => [
+                        'email' => 'your email format is invalid',
+                    ]
                 ]));
                 return $response->withStatus(404)->withHeader('Content-Type', 'application/json');
             }
 
             if ($password !== $password_confirmation) {
                 $response->getBody()->write(json_encode([
-                    'status' => 'error',
-                    'message' => 'confirmation passwords do not match',
+                    'status' => 'failed',
+                    'message' => 'passwords do not match',
+                    'errors' => [
+                        'password_confirmation' => 'your passwords do not match',
+                    ]
                 ]));
                 return $response->withStatus(404)->withHeader('Content-Type', 'application/json');
             }
 
             if (strlen($password) < 6) {
                 $response->getBody()->write(json_encode([
-                    'status' => 'error',
+                    'status' => 'failed',
                     'message' => 'password must be at least 6 characters',
+                    'errors' => [
+                        'password' => 'your password must be at least 6 characters',
+                    ]
                 ]));
                 return $response->withStatus(404)->withHeader('Content-Type', 'application/json');
             }

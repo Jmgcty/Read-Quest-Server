@@ -27,8 +27,6 @@ final class CreateInstitutionMembersTable extends AbstractMigration
             ->addColumn('is_valid_member', 'boolean', ['null' => true, 'default' => null])
             ->addTimestamps()
 
-            ->addIndex(['user_id'], ['unique' => true])
-            ->addIndex(['institution_id'], ['unique' => true])
             ->addIndex(['institutional_id'], ['unique' => true])
             ->addForeignKey('user_id', 'users', ['id'], ['delete' => 'CASCADE', 'update' => 'CASCADE'])
             ->addForeignKey('institution_id', 'institutions', ['id'], ['delete' => 'CASCADE', 'update' => 'CASCADE'])

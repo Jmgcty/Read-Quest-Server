@@ -7,6 +7,7 @@ use Slim\Factory\AppFactory;
 use App\Controllers\AuthController\LoginController;
 use App\Controllers\AuthController\SignupController;
 use App\Controllers\InstitutionController\InstitutionMemberController;
+use App\Controllers\ModuleController\ReadingModuleController;
 
 try {
 
@@ -21,11 +22,17 @@ try {
     });
 
 
-    // Routing
+    // Routing //
     $app->post('/api/auth/login', [LoginController::class, 'login']);
     $app->post('/api/auth/signup', [SignupController::class, 'signup']);
+    $app->post('/api/auth/logout', [LoginController::class, 'logout']);
     //
     $app->get('/api/institution/member/{id}', [InstitutionMemberController::class, 'getUserInstitution']);
+    $app->post('/api/institution/join', [InstitutionMemberController::class, 'joinInstitution']);
+    $app->post('/api/institution/cancel', [InstitutionMemberController::class, 'cancelJoinInstitution']);
+    $app->post('/api/module/upload', [ReadingModuleController::class, 'uploadModule']);
+    $app->get('/api/module/uploader/{id}', [ReadingModuleController::class, 'getModulesByUploader']);
+    $app->get('/api/modules', [ReadingModuleController::class, 'getAllBook']);
 
     // Run the app
     $app->run();

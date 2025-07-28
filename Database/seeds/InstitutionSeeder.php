@@ -33,5 +33,38 @@ class InstitutionSeeder extends AbstractSeed
             $conn->rollBack();
             throw $e;
         }
+
+        // KEYS
+        try {
+
+            $conn = DB::connection();
+
+            $institutions = [
+                [
+                    'institution_id' => 1,
+                    'role' => 'student',
+                    'key' => 'student_key',
+                ],
+                [
+                    'institution_id' => 1,
+                    'role' => 'teacher',
+                    'key' => 'teacher_key',
+                ],
+                [
+                    'institution_id' => 1,
+                    'role' => 'admin',
+                    'key' => 'admin_key',
+                ],
+            ];
+
+            $conn->beginTransaction();
+            foreach ($institutions as $institution) {
+                $conn->table('institution_keys')->insert($institution);
+            }
+            $conn->commit();
+        } catch (\Exception $e) {
+            $conn->rollBack();
+            throw $e;
+        }
     }
 }

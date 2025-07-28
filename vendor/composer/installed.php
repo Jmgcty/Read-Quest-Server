@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'readquest/server',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'a899502336a32b57453afffb0cbb52557146166f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -420,9 +420,9 @@
             'dev_requirement' => false,
         ),
         'readquest/server' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'a899502336a32b57453afffb0cbb52557146166f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -619,6 +619,15 @@
             'provided' => array(
                 0 => '2.3|3.0',
             ),
+        ),
+        'textalk/websocket' => array(
+            'pretty_version' => '1.5.8',
+            'version' => '1.5.8.0',
+            'reference' => 'd05dbaa97500176447ffb1f1800573f23085ab13',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../textalk/websocket',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'vlucas/phpdotenv' => array(
             'pretty_version' => 'v5.6.2',

@@ -25,7 +25,7 @@ final class CreateAuthSessionsTable extends AbstractMigration
             ->addColumn('token', 'string', ['limit' => 255, 'null' => false])
             ->addIndex(['token'], ['unique' => true])
             ->addColumn('created_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
-            ->addForeignKey('auth_id', 'authentications', ['user_id'], ['delete' => 'CASCADE', 'update' => 'CASCADE'])
+            ->addForeignKey('auth_id', 'authentications', ['user_id'], ['delete' => 'NO ACTION', 'update' => 'NO ACTION'])
             ->create();
     }
 

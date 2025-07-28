@@ -33,6 +33,10 @@ class ComposerStaticInitc5d1f02cacca243ab3977e583a185fdf
         array (
             'voku\\' => 5,
         ),
+        'W' => 
+        array (
+            'WebSocket\\' => 10,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php83\\' => 23,
@@ -131,6 +135,10 @@ class ComposerStaticInitc5d1f02cacca243ab3977e583a185fdf
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'WebSocket\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/textalk/websocket/lib',
         ),
         'Symfony\\Polyfill\\Php83\\' => 
         array (

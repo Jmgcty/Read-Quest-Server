@@ -1,18 +1,22 @@
 <?php
 
+namespace App\Helpers;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+use WebSocket\Client;
 
-$host = $_ENV['SOCKET_HOST'] ?? 'localhost';
-$port = $_ENV['SOCKET_PORT'] ?? 8080;
+class WebSocketSender
+{
+    public static function send(string $message): void
+    {
+        $host = $_ENV['SOCKET_HOST'] ?? 'localhost';
+        $port = $_ENV['SOCKET_PORT'] ?? 8000;
 
-$context = stream_context_create();
-$socket = stream_socket_client("tcp://$host:$port", $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $context);
-
-if ($socket) {
-    fwrite($socket, $argv[1] ?? 'no message');
-    fclose($socket);
-} else {
-    echo "Failed to connect to WebSocket: $errstr ($errno)\n";
+        try {
+            $client = new Client("ws://$host:$port/live");
+            $client->send($message);
+            $client->close();
+        } catch (\Exception $e) {
+            error_log("WebSocket error: " . $e->getMessage());
+        }
+    }
 }

@@ -8,7 +8,8 @@
         "robmorgan/phinx": "^0.16.10",
         "cboden/ratchet": "^0.4.4",
         "slim/slim": "^4.14",
-        "slim/psr7": "^1.7"
+        "slim/psr7": "^1.7",
+        "textalk/websocket": "^1.5"
     },
     "autoload": {
         "psr-4": {
@@ -17,7 +18,7 @@
     },
 
     "scripts": {
-        "serve": "php -S 192.168.1.21:8000 -t public",
+        "serve": "php -S 10.97.249.251:8080 -t public",
         "socket" : "php sockets/server.php",
         "migrate": "phinx migrate",
         "rollback": "phinx rollback -t 0",
